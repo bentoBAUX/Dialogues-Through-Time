@@ -1,8 +1,6 @@
-import uvicorn, os
+import uvicorn, os, uuid, asyncio, redis
 from fastapi import FastAPI, Query
 from fastapi.responses import StreamingResponse
-import asyncio
-import redis
 
 from dotenv import load_dotenv
 
@@ -14,6 +12,14 @@ app = FastAPI()
 # Connect to Redis
 r = redis.StrictRedis(host='msai.redis.cache.windows.net', port=6380, password=REDIS_PASSWORD, ssl=True)
 
+
+## get unique id for saving
+@app.get("/get_unique_id")
+def get_unique_id():
+    unique_id = str(uuid.uuid4())  # Generate a random UUID
+    return {"id": unique_id}
+
+## Stream the response of gpt
 async def stream_generator(unity_id: str):
     print("start")
     start = int(r.get(unity_id) or 0)
@@ -22,6 +28,7 @@ async def stream_generator(unity_id: str):
         yield f"data: {i}\n\n"
         await asyncio.sleep(1)
     r.set(unity_id, start + 100)
+    
 
 @app.get("/stream")
 async def read_stream(unity_id: str = Query(..., alias="unityid")):
