@@ -24,15 +24,15 @@ async def stream_generator(unity_id: str):
     print("start")
     start = int(r.get(unity_id) or 0)
     print("redis get")
-    for i in range(start, start + 100):
+    for i in range(start, start + 10):
         yield f"data: {i}\n\n"
         await asyncio.sleep(1)
-    r.set(unity_id, start + 100)
+    r.set(unity_id, start + 10)
     
 
-@app.get("/stream")
+@app.get("/chat")
 async def read_stream(unity_id: str = Query(..., alias="unityid")):
     return StreamingResponse(stream_generator(unity_id), media_type="text/event-stream")
 
 if __name__ == "__main__":
-    uvicorn.run("server:app",host="0.0.0.0",port=5000,reload=True)
+    uvicorn.run("server:app",host="0.0.0.0",port=5000)
