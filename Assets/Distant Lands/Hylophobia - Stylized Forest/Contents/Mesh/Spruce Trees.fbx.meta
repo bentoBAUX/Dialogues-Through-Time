@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: 72544c1b6d1fa0847b1b754df22cd989
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Spruce 1
+    100002: Spruce 1 LOD 1
+    100004: Spruce 1 LOD 2
+    100006: Spruce 2
+    100008: Spruce 2 LOD 1
+    100010: Spruce 2 LOD 2
+    100012: Spruce 3
+    100014: Spruce 3 LOD 1
+    100016: Spruce 3 LOD 2
+    100018: Spruce 4
+    100020: Spruce 4 LOD 1
+    100022: Spruce 4 LOD 2
+    100024: //RootNode
+    400000: Spruce 1
+    400002: Spruce 1 LOD 1
+    400004: Spruce 1 LOD 2
+    400006: Spruce 2
+    400008: Spruce 2 LOD 1
+    400010: Spruce 2 LOD 2
+    400012: Spruce 3
+    400014: Spruce 3 LOD 1
+    400016: Spruce 3 LOD 2
+    400018: Spruce 4
+    400020: Spruce 4 LOD 1
+    400022: Spruce 4 LOD 2
+    400024: //RootNode
+    2100000: Tree
+    2100002: Leaves
+    2300000: Spruce 1
+    2300002: Spruce 1 LOD 1
+    2300004: Spruce 1 LOD 2
+    2300006: Spruce 2
+    2300008: Spruce 2 LOD 1
+    2300010: Spruce 2 LOD 2
+    2300012: Spruce 3
+    2300014: Spruce 3 LOD 1
+    2300016: Spruce 3 LOD 2
+    2300018: Spruce 4
+    2300020: Spruce 4 LOD 1
+    2300022: Spruce 4 LOD 2
+    3300000: Spruce 1
+    3300002: Spruce 1 LOD 1
+    3300004: Spruce 1 LOD 2
+    3300006: Spruce 2
+    3300008: Spruce 2 LOD 1
+    3300010: Spruce 2 LOD 2
+    3300012: Spruce 3
+    3300014: Spruce 3 LOD 1
+    3300016: Spruce 3 LOD 2
+    3300018: Spruce 4
+    3300020: Spruce 4 LOD 1
+    3300022: Spruce 4 LOD 2
+    4300000: Spruce 2
+    4300002: Spruce 1
+    4300004: Spruce 3
+    4300006: Spruce 4
+    4300008: Spruce 2 LOD 1
+    4300010: Spruce 1 LOD 1
+    4300012: Spruce 3 LOD 1
+    4300014: Spruce 4 LOD 1
+    4300016: Spruce 2 LOD 2
+    4300018: Spruce 1 LOD 2
+    4300020: Spruce 3 LOD 2
+    4300022: Spruce 4 LOD 2
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.15
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
