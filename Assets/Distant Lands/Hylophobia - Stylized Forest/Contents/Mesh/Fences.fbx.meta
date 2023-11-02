@@ -1,0 +1,453 @@
+fileFormatVersion: 2
+guid: 81b5bc3529befe348b4e2e9e372cd686
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Bush 1
+    100002: //RootNode
+    100004: Rock 01
+    100006: Rock 02
+    100008: Rock 03
+    100010: Rock 04
+    100012: Rock 05
+    100014: Rock 06
+    100016: Rock 07
+    100018: Rock 08
+    100020: Rock 09
+    100022: Rock 10
+    100024: Rock 11
+    100026: Rock 12
+    100028: Rock 13
+    100030: Rock 14
+    100032: Rock 15
+    100034: Bush 2
+    100036: Bush 3
+    100038: Fence 1
+    100040: Trunk 1
+    100042: Trunk 2
+    100044: Trunk 3
+    100046: Trunk 4
+    100048: Fence 2
+    100050: Fence 2.001
+    100052: Boulder 01
+    100054: Boulder 02
+    100056: Boulder 03
+    100058: Boulder 04
+    100060: Boulder 05
+    100062: Boulder 06
+    100064: Boulder 07
+    100066: Boulder 08
+    100068: Boulder 09
+    100070: Boulder 10
+    100072: Boulder 11
+    100074: Boulder 12
+    100076: Boulder 13
+    100078: Boulder 14
+    100080: Boulder 15
+    100082: Fence 3
+    100084: Stone 01
+    100086: Stone 02
+    100088: Stone 03
+    100090: Stone 04
+    100092: Stone 05
+    100094: Stone 06
+    100096: Stone 07
+    100098: Stone 08
+    100100: Stone 09
+    100102: Stone 10
+    100104: Stone 11
+    100106: Stone 12
+    100108: Stone 13
+    100110: Stone 14
+    100112: Stone 15
+    100114: Pebble 1
+    100116: Pebble 2
+    100118: Pebble 3
+    100120: Pebble 4
+    100122: Pebble 5
+    100124: Fence 4
+    100126: Fence 5
+    100128: Leaf Pile 1
+    100130: Pile 1
+    100132: Flat Rock 1
+    100134: Flat Rock 2
+    100136: Flat Rock 3
+    100138: Flat Rock 4
+    100140: Flat Rock 5
+    100142: Pile 2
+    400000: Bush 1
+    400002: //RootNode
+    400004: Rock 01
+    400006: Rock 02
+    400008: Rock 03
+    400010: Rock 04
+    400012: Rock 05
+    400014: Rock 06
+    400016: Rock 07
+    400018: Rock 08
+    400020: Rock 09
+    400022: Rock 10
+    400024: Rock 11
+    400026: Rock 12
+    400028: Rock 13
+    400030: Rock 14
+    400032: Rock 15
+    400034: Bush 2
+    400036: Bush 3
+    400038: Fence 1
+    400040: Trunk 1
+    400042: Trunk 2
+    400044: Trunk 3
+    400046: Trunk 4
+    400048: Fence 2
+    400050: Fence 2.001
+    400052: Boulder 01
+    400054: Boulder 02
+    400056: Boulder 03
+    400058: Boulder 04
+    400060: Boulder 05
+    400062: Boulder 06
+    400064: Boulder 07
+    400066: Boulder 08
+    400068: Boulder 09
+    400070: Boulder 10
+    400072: Boulder 11
+    400074: Boulder 12
+    400076: Boulder 13
+    400078: Boulder 14
+    400080: Boulder 15
+    400082: Fence 3
+    400084: Stone 01
+    400086: Stone 02
+    400088: Stone 03
+    400090: Stone 04
+    400092: Stone 05
+    400094: Stone 06
+    400096: Stone 07
+    400098: Stone 08
+    400100: Stone 09
+    400102: Stone 10
+    400104: Stone 11
+    400106: Stone 12
+    400108: Stone 13
+    400110: Stone 14
+    400112: Stone 15
+    400114: Pebble 1
+    400116: Pebble 2
+    400118: Pebble 3
+    400120: Pebble 4
+    400122: Pebble 5
+    400124: Fence 4
+    400126: Fence 5
+    400128: Leaf Pile 1
+    400130: Pile 1
+    400132: Flat Rock 1
+    400134: Flat Rock 2
+    400136: Flat Rock 3
+    400138: Flat Rock 4
+    400140: Flat Rock 5
+    400142: Pile 2
+    2100000: No Name
+    2100002: Wood 2
+    2100004: Wood 1
+    2100006: Wood 3
+    2100008: Rock
+    2300000: Bush 1
+    2300002: Rock 01
+    2300004: Rock 02
+    2300006: Rock 03
+    2300008: Rock 04
+    2300010: Rock 05
+    2300012: Rock 06
+    2300014: Rock 07
+    2300016: Rock 08
+    2300018: Rock 09
+    2300020: Rock 10
+    2300022: Rock 11
+    2300024: Rock 12
+    2300026: Rock 13
+    2300028: Rock 14
+    2300030: Rock 15
+    2300032: Bush 2
+    2300034: Bush 3
+    2300036: Fence 1
+    2300038: Trunk 1
+    2300040: Trunk 2
+    2300042: Trunk 3
+    2300044: Trunk 4
+    2300046: Fence 2
+    2300048: Fence 2.001
+    2300050: Boulder 01
+    2300052: Boulder 02
+    2300054: Boulder 03
+    2300056: Boulder 04
+    2300058: Boulder 05
+    2300060: Boulder 06
+    2300062: Boulder 07
+    2300064: Boulder 08
+    2300066: Boulder 09
+    2300068: Boulder 10
+    2300070: Boulder 11
+    2300072: Boulder 12
+    2300074: Boulder 13
+    2300076: Boulder 14
+    2300078: Boulder 15
+    2300080: Fence 3
+    2300082: Stone 01
+    2300084: Stone 02
+    2300086: Stone 03
+    2300088: Stone 04
+    2300090: Stone 05
+    2300092: Stone 06
+    2300094: Stone 07
+    2300096: Stone 08
+    2300098: Stone 09
+    2300100: Stone 10
+    2300102: Stone 11
+    2300104: Stone 12
+    2300106: Stone 13
+    2300108: Stone 14
+    2300110: Stone 15
+    2300112: Pebble 1
+    2300114: Pebble 2
+    2300116: Pebble 3
+    2300118: Pebble 4
+    2300120: Pebble 5
+    2300122: Fence 4
+    2300124: Fence 5
+    2300126: Leaf Pile 1
+    2300128: Pile 1
+    2300130: Flat Rock 1
+    2300132: Flat Rock 2
+    2300134: Flat Rock 3
+    2300136: Flat Rock 4
+    2300138: Flat Rock 5
+    2300140: Pile 2
+    3300000: Bush 1
+    3300002: Rock 01
+    3300004: Rock 02
+    3300006: Rock 03
+    3300008: Rock 04
+    3300010: Rock 05
+    3300012: Rock 06
+    3300014: Rock 07
+    3300016: Rock 08
+    3300018: Rock 09
+    3300020: Rock 10
+    3300022: Rock 11
+    3300024: Rock 12
+    3300026: Rock 13
+    3300028: Rock 14
+    3300030: Rock 15
+    3300032: Bush 2
+    3300034: Bush 3
+    3300036: Fence 1
+    3300038: Trunk 1
+    3300040: Trunk 2
+    3300042: Trunk 3
+    3300044: Trunk 4
+    3300046: Fence 2
+    3300048: Fence 2.001
+    3300050: Boulder 01
+    3300052: Boulder 02
+    3300054: Boulder 03
+    3300056: Boulder 04
+    3300058: Boulder 05
+    3300060: Boulder 06
+    3300062: Boulder 07
+    3300064: Boulder 08
+    3300066: Boulder 09
+    3300068: Boulder 10
+    3300070: Boulder 11
+    3300072: Boulder 12
+    3300074: Boulder 13
+    3300076: Boulder 14
+    3300078: Boulder 15
+    3300080: Fence 3
+    3300082: Stone 01
+    3300084: Stone 02
+    3300086: Stone 03
+    3300088: Stone 04
+    3300090: Stone 05
+    3300092: Stone 06
+    3300094: Stone 07
+    3300096: Stone 08
+    3300098: Stone 09
+    3300100: Stone 10
+    3300102: Stone 11
+    3300104: Stone 12
+    3300106: Stone 13
+    3300108: Stone 14
+    3300110: Stone 15
+    3300112: Pebble 1
+    3300114: Pebble 2
+    3300116: Pebble 3
+    3300118: Pebble 4
+    3300120: Pebble 5
+    3300122: Fence 4
+    3300124: Fence 5
+    3300126: Leaf Pile 1
+    3300128: Pile 1
+    3300130: Flat Rock 1
+    3300132: Flat Rock 2
+    3300134: Flat Rock 3
+    3300136: Flat Rock 4
+    3300138: Flat Rock 5
+    3300140: Pile 2
+    4300000: Rock 15
+    4300002: Rock 01
+    4300004: Rock 02
+    4300006: Rock 03
+    4300008: Rock 04
+    4300010: Rock 05
+    4300012: Rock 06
+    4300014: Rock 07
+    4300016: Rock 08
+    4300018: Rock 09
+    4300020: Rock 10
+    4300022: Rock 11
+    4300024: Rock 12
+    4300026: Rock 13
+    4300028: Rock 14
+    4300030: Bush 1
+    4300032: Bush 2
+    4300034: Bush 3
+    4300036: Trunk 1
+    4300038: Trunk 2
+    4300040: Trunk 3
+    4300042: Trunk 4
+    4300044: Fence 1
+    4300046: Fence 2
+    4300048: Fence 2.001
+    4300050: Boulder 15
+    4300052: Boulder 01
+    4300054: Boulder 02
+    4300056: Boulder 03
+    4300058: Boulder 04
+    4300060: Boulder 05
+    4300062: Boulder 06
+    4300064: Boulder 07
+    4300066: Boulder 08
+    4300068: Boulder 09
+    4300070: Boulder 10
+    4300072: Boulder 11
+    4300074: Boulder 12
+    4300076: Boulder 13
+    4300078: Boulder 14
+    4300080: Fence 3
+    4300082: Stone 01
+    4300084: Stone 02
+    4300086: Stone 03
+    4300088: Stone 04
+    4300090: Stone 05
+    4300092: Stone 06
+    4300094: Stone 07
+    4300096: Stone 08
+    4300098: Stone 09
+    4300100: Stone 10
+    4300102: Stone 11
+    4300104: Stone 12
+    4300106: Stone 13
+    4300108: Stone 14
+    4300110: Stone 15
+    4300112: Pebble 1
+    4300114: Pebble 2
+    4300116: Pebble 3
+    4300118: Pebble 4
+    4300120: Pebble 5
+    4300122: Fence 4
+    4300124: Fence 5
+    4300126: Leaf Pile 1
+    4300128: Pile 1
+    4300130: Flat Rock 1
+    4300132: Flat Rock 2
+    4300134: Flat Rock 3
+    4300136: Flat Rock 4
+    4300138: Flat Rock 5
+    4300140: Pile 2
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

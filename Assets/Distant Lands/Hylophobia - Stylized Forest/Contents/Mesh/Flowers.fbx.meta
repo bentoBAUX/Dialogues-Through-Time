@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: b9ee2eae59a2450408a8cd887d4d7a9a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Lavender
+    100004: Wildflower 1
+    100006: Yarrow
+    100008: Flowers 1
+    100010: Flowers 2
+    100012: Flowers 3
+    100014: Flowers 4
+    100016: Flowers 5
+    100018: Flowers 6
+    100020: Flowers 7
+    100022: Flowers 8
+    100024: Flowers 9
+    400000: //RootNode
+    400002: Lavender
+    400004: Wildflower 1
+    400006: Yarrow
+    400008: Flowers 1
+    400010: Flowers 2
+    400012: Flowers 3
+    400014: Flowers 4
+    400016: Flowers 5
+    400018: Flowers 6
+    400020: Flowers 7
+    400022: Flowers 8
+    400024: Flowers 9
+    2100000: No Name
+    2300000: Lavender
+    2300002: Wildflower 1
+    2300004: Yarrow
+    2300006: Flowers 1
+    2300008: Flowers 2
+    2300010: Flowers 3
+    2300012: Flowers 4
+    2300014: Flowers 5
+    2300016: Flowers 6
+    2300018: Flowers 7
+    2300020: Flowers 8
+    2300022: Flowers 9
+    3300000: Lavender
+    3300002: Wildflower 1
+    3300004: Yarrow
+    3300006: Flowers 1
+    3300008: Flowers 2
+    3300010: Flowers 3
+    3300012: Flowers 4
+    3300014: Flowers 5
+    3300016: Flowers 6
+    3300018: Flowers 7
+    3300020: Flowers 8
+    3300022: Flowers 9
+    4300000: Lavender
+    4300002: Wildflower 1
+    4300004: Yarrow
+    4300006: Flowers 3
+    4300008: Flowers 1
+    4300010: Flowers 2
+    4300012: Flowers 4
+    4300014: Flowers 5
+    4300016: Flowers 6
+    4300018: Flowers 7
+    4300020: Flowers 8
+    4300022: Flowers 9
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.3
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
