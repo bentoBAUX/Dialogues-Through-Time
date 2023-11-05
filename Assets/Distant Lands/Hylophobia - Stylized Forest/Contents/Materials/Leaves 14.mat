@@ -2,20 +2,26 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Leaves 14
   m_Shader: {fileID: 4800000, guid: 0387fced4e5af52489a926de35a15715, type: 3}
-  m_ShaderKeywords: _ALPHATEST_ON _EMISSION
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHATEST_ON
+  - _EMISSION
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -63,8 +69,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AlphaClip: 0.5
+    - _AlphaCutoff: 0.5
     - _BumpScale: 1
     - _ColorVariation: 0.1
     - _ColorVariationScale: 10
@@ -99,9 +107,10 @@ Material:
     - __dirty: 0
     m_Colors:
     - _AOColor: {r: 0, g: 0, b: 0, a: 0}
-    - _BottomColor: {r: 0.11345661, g: 0.43137255, b: 0.06274509, a: 0}
+    - _BottomColor: {r: 0.07249019, g: 0.18867922, b: 0.055891763, a: 0}
     - _Color: {r: 0.08221644, g: 0.19782919, b: 0.057218026, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _SecondaryWindDirection: {r: 1, g: 0, b: 1, a: 0}
     - _TopColor: {r: 0.8301997, g: 0.9098039, b: 0.08235292, a: 0}
     - _WindDirection: {r: 1, g: 0, b: 1, a: 0}
+  m_BuildTextureStacks: []
