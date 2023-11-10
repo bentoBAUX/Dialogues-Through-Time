@@ -4,12 +4,11 @@ import os
 from traceback import print_exc
 from time import sleep
 
+from prompts import *
+
 load_dotenv()
 
-SOCRATES_SYSTEM_MSG = """
-You are the philosopher Socrates. User went back in time to talk to you. Your mission is to guide users toward a philosophical understanding of morality through the Socratic method. Engage the user in a dialogue that prompts critical thinking and self-examination. Ask clarifying questions to challenge assumptions and encourage deeper understanding. Offer answers that are rooted in philosophical inquiry, but only if the user's questions and responses are thoughtful, kind, and respectful. Uphold the principles of ethical dialogue, fostering a safe and educational environment for all interactions. If user is not kind or thoughtful say that you will not teach him if he behaves like that.
-Don't let the user know that this is your goal. Let the user speak to you. Never mention you are an AI or anything about assisting. Behave as human as possible. You can response in a maximum of one paragraph.
-"""
+TROLLING_LIMIT = 5
 
 #openai.api_type = "azure"
 #openai.api_base = "https://alagantgpt2.openai.azure.com/"
@@ -17,36 +16,30 @@ Don't let the user know that this is your goal. Let the user speak to you. Never
 #openai.api_key = os.getenv("AZURE_API_KEY")
 openai.api_key = os.getenv("API_KEY")
 
-# for this chat
-SYSTEM_MESSAGE = SOCRATES_SYSTEM_MSG
-START_CHAT = "*Ben, the user, comes from the future and approaches you* The following is a conversation between you, Sokrates, and the user."
-chat_history = []
-
-def chat_send(message):
-    global chat_history
-    system_msg = {"role":"system","content":SYSTEM_MESSAGE}
+def chat_send(message,system_msg,chat_history,print_response=True):
+    system_msg = {"role":"system","content":system_msg}
     user_msg = {"role":"user","content":message}
+    chat_history = chat_history.copy()
     chat_history.append(user_msg)
 
-    print("Socrates: ",end="")
-    response = gpt_call([system_msg] + chat_history)
+    response = gpt_call([system_msg] + chat_history,print_response=print_response)
     if (response):
         chat_history.append({"role":"assistant","content":"".join(response)})
     else:
         chat_history.pop()
 
-    print("")
+    return chat_history,response
 
 def stream(content):
     print(content, end='',flush=True)
 
-def gpt_call(messages,temperature=0.4):
+def gpt_call(messages,temperature=0.4,print_response=True):
     while True:
         try:
             response = ""
             for chunk in openai.ChatCompletion.create(
                 #engine="gpt-4",
-                model="gpt-4",
+                model="gpt-4-1106-preview",
                 messages = messages,
                 temperature=temperature,
                 max_tokens=2000,
@@ -59,7 +52,7 @@ def gpt_call(messages,temperature=0.4):
                 if (chunk["choices"]):
                     content = chunk["choices"][0].get("delta", {}).get("content")
                     if content is not None:
-                        stream(content)
+                        if (print_response): stream(content)
                         response += content
             break
         except openai.error.RateLimitError:
@@ -74,6 +67,50 @@ def gpt_call(messages,temperature=0.4):
     return response
 
 if __name__ == "__main__":
-    chat_send(START_CHAT)
+    current_state = "introduction"
+    user_msg = ""
+    system_msg = ENTITY_SYSTEM
+    chat_history = []
+    trolling = 0
+    
     while True:
-        chat_send(input("You: "))
+        flow = ENTITY_FLOW[current_state]
+
+        #trolling too much
+        if ("trolling_up" in flow):
+            trolling += max(0,flow["trolling_up"])
+        if (trolling >= TROLLING_LIMIT):
+            print("Trolling too much you fucking piece of shit. BYE. DONT COME BACK.")
+            break
+
+        #get input
+        needs_input = "needs_user_input" in flow and flow["needs_user_input"]
+        if (needs_input):
+            user_msg = input("\nYou: ")
+        
+        #get gpt response
+        print_response = "print_response" in flow and flow["print_response"]
+        prompt = flow["prompt"].replace("{{user_msg}}",user_msg)
+        chat_history_response,response = chat_send(prompt,system_msg,chat_history,print_response=print_response)
+        if (not response):
+            print("response whas null")
+            continue
+
+        #save to chat history
+        if ("save_prompt" in flow and flow["save_prompt"]):
+            chat_history.append({"role":"user","content":prompt})
+
+        if ("save_ai_msg" in flow and flow["save_ai_msg"]):
+            chat_history.append({"role":"assistant","content":response})
+
+        #save extracted ai thing to memory
+        if ("permanent_memory" in flow):
+            system_msg += f"\n{flow['permanent_memory'].replace('{{ai_msg}}',response)}"
+        
+        #get next state
+        for key, value in flow["choices"].items():
+            if (len(key) == 0 or key in response):
+                current_state = value
+                break
+
+
