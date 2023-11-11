@@ -12,6 +12,11 @@ Speak in an understandable way, dont use any complicated words. Speak like a div
 Don't generate the dialogue, just reply to the user message.
 """.strip()
 
+LANGUAGES = {
+    "CS":"Mluv česky. Odpovídej pouze v češtině.",
+    "EN":"Speak English. Reply only in English."
+}
+
 #user messages are always saved
 ENTITY_FLOW = {
     "introduction": {

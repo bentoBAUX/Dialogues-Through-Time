@@ -10,6 +10,7 @@ load_dotenv()
 
 TROLLING_LIMIT = 5
 
+
 #openai.api_type = "azure"
 #openai.api_base = "https://alagantgpt2.openai.azure.com/"
 #openai.api_version = "2023-07-01-preview"
@@ -69,7 +70,9 @@ def gpt_call(messages,temperature=0.4,print_response=True):
 if __name__ == "__main__":
     current_state = "introduction"
     user_msg = ""
+    jazyk = "CS"
     system_msg = ENTITY_SYSTEM
+    system_msg += "\n" + LANGUAGES[jazyk]
     chat_history = []
     trolling = 0
     
@@ -109,7 +112,7 @@ if __name__ == "__main__":
         
         #get next state
         for key, value in flow["choices"].items():
-            if (len(key) == 0 or key in response):
+            if (len(key) == 0 or key.lower() in response.lower()):
                 current_state = value
                 break
 
