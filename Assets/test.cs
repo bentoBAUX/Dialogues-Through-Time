@@ -92,33 +92,40 @@ public class test : MonoBehaviour
 
     IEnumerator ReadStream(string id)
     {
-        string urlWithParams = GetChatUrl(id);
-        string lastResponse = "";
+      string urlWithParams = GetChatUrl(id);
+      string lastResponse = "";
+      Debug.Log(urlWithParams);  
 
-        using (UnityWebRequest request = UnityWebRequest.Get(urlWithParams))
+      using (UnityWebRequest request = UnityWebRequest.Get(urlWithParams))
+      {
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SendWebRequest();
+
+        while (!request.isDone)
         {
-            request.downloadHandler = new DownloadHandlerBuffer();
-            request.SendWebRequest();
+          if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+          {
+            Debug.LogError("Error: " + request.error);
+            yield break;
+          }
+				  // Check if the server is reachable or not
+				  if (request.responseCode == 404 || request.responseCode == 0)
+				  {
+					  Debug.LogError("Server not found or unreachable.");
+					  yield break;
+				  }
 
-            while (!request.isDone)
-            {
-                if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogError("Error: " + request.error);
-                    yield break;
-                }
+				  string currentResponse = request.downloadHandler.text;
+          if (currentResponse != lastResponse)
+          {
+            string newData = currentResponse.Substring(lastResponse.Length);
+            ProcessStreamData(newData);
+            lastResponse = currentResponse;
+          }
 
-                string currentResponse = request.downloadHandler.text;
-                if (currentResponse != lastResponse)
-                {
-                    string newData = currentResponse.Substring(lastResponse.Length);
-                    ProcessStreamData(newData);
-                    lastResponse = currentResponse;
-                }
-
-                yield return new WaitForSeconds(1); // Wait for a second before checking for new data
-            }
+          yield return new WaitForSeconds(0.4f); // Wait for a second before checking for new data
         }
+      }
     }
 
 
