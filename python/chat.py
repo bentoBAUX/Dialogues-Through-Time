@@ -10,6 +10,7 @@ load_dotenv()
 
 TROLLING_LIMIT = 5
 
+
 #openai.api_type = "azure"
 #openai.api_base = "https://alagantgpt2.openai.azure.com/"
 #openai.api_version = "2023-07-01-preview"
@@ -69,12 +70,15 @@ def gpt_call(messages,temperature=0.4,print_response=True):
 if __name__ == "__main__":
     current_state = "introduction"
     user_msg = ""
-    system_msg = ENTITY_SYSTEM
+    jazyk = "EN"
+    memory = ""
     chat_history = []
     trolling = 0
     
     while True:
         flow = ENTITY_FLOW[current_state]
+        system_msg = ENTITY_SYSTEM + "\n" + memory
+        if (jazyk): system_msg += "\n" + LANGUAGES[jazyk]
 
         #trolling too much
         if ("trolling_up" in flow):
@@ -105,11 +109,15 @@ if __name__ == "__main__":
 
         #save extracted ai thing to memory
         if ("permanent_memory" in flow):
-            system_msg += f"\n{flow['permanent_memory'].replace('{{ai_msg}}',response)}"
+            memory += f"\n{flow['permanent_memory'].replace('{{ai_msg}}',response)}"
+
+        #end conversation
+        if ("end_conversation" in flow and flow["end_conversation"]):
+            break
         
         #get next state
         for key, value in flow["choices"].items():
-            if (len(key) == 0 or key in response):
+            if (len(key) == 0 or key.lower() in response.lower()):
                 current_state = value
                 break
 
