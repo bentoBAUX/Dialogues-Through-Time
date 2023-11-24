@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chatPanel: {fileID: 0}
-  playerTextObject: {fileID: 6332104983984309995, guid: 4c1807761821c764280235569ca589d3,
+  playerTextBubble: {fileID: 30332161196380499, guid: 2cbbe09cd0a47a74a97b4229fb431ab1,
     type: 3}
-  AITextObject: {fileID: 6332104983984309995, guid: aa1ab1fadb1be1641aef2b5ff9ebef5c,
+  AITextBubble: {fileID: 30332161196380499, guid: 6300e604c93446049bc4c53e7ed81989,
     type: 3}
   chatBox: {fileID: 0}
+  playerSent: 0
   messageList: []

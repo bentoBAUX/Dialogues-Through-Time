@@ -9,19 +9,20 @@ using UnityEngine.UI;
 public class ChatManager : MonoBehaviour
 {
     public GameObject chatPanel;
-    public GameObject playerTextObject;
-    public GameObject AITextObject;
-    public TMP_InputField chatBox;
     
+    public GameObject playerTextBubble;
+
+    public GameObject AITextBubble;
+
+    
+    public TMP_InputField chatBox;
+
+    [SerializeField] private bool playerSent = false;
     
     [SerializeField]
     private List<Message> messageList = new List<Message>();
-    void Start()
-    {
-        
-    }
+ 
 
-    // Update is called once per frame
     void Update()
     {
         if (chatBox.text != "")
@@ -30,6 +31,7 @@ public class ChatManager : MonoBehaviour
             {
                 SendMessageToChat(chatBox.text, Message.MessageType.playerMessage);
                 chatBox.text = "";
+                playerSent = true;
             }
         }
         else
@@ -38,6 +40,12 @@ public class ChatManager : MonoBehaviour
             {
                 chatBox.ActivateInputField();
             }
+        }
+
+        if (playerSent)
+        {
+            SendMessageToChat("At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat",Message.MessageType.AIMessage);
+            playerSent = false;
         }
     }
 
@@ -49,9 +57,9 @@ public class ChatManager : MonoBehaviour
 
         newMessage.text = text;
     
-        newText = messageType == Message.MessageType.playerMessage? Instantiate(playerTextObject,chatPanel.transform) : Instantiate(AITextObject,chatPanel.transform);
+        newText = messageType == Message.MessageType.playerMessage? Instantiate(playerTextBubble,chatPanel.transform) : Instantiate(AITextBubble,chatPanel.transform);
         
-        newMessage.textObject = newText.GetComponent<TMP_Text>();
+        newMessage.textObject = newText.GetComponentInChildren<TMP_Text>();
 
         newMessage.textObject.text = newMessage.text;
         
