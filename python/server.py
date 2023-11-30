@@ -1,11 +1,12 @@
 import uvicorn, os, uuid, asyncio, redis,json
 import openai
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query,Request
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from dataclasses import dataclass, field
 from time import sleep
+from pydantic import BaseModel
 from traceback import print_exc
 
 from prompts import *
@@ -30,19 +31,23 @@ app.add_middleware(
 # Connect to Redis
 r = redis.StrictRedis(host='msai.redis.cache.windows.net', port=6380, password=REDIS_PASSWORD, ssl=True)
 
+#this is a class that stores the whole state of the game.
 @dataclass
 class ChatState:
-    processing: bool = False
-    current_state: str = "introduction"
-    current_person: str = "entity"
-    user_msg: str = ""
-    ai_msg: str = ""
-    system_msg: str = ""
-    memory: str = ""
-    jazyk: str = "EN"
-    chat_history: list = field(default_factory=list)
+    processing: bool = False #if openai is currently replying, dont allow new requests
+    current_state: str = "introduction" #current state of the conversation flow json
+    current_scene: str = "socrates" #the current person to talk to = scene in unity that should be active
+    previous_scene: str = "" #the previous scene
+    user_msg: str = "" #the last message the user sent
+    ai_msg: str = "" #the last message the ai sent
+    system_msg: str = "" 
+    memory: str = "" #the memory of the ai about the player
+    jazyk: str = "EN" 
+    chat_history: list = field(default_factory=list) #current conversation history
+    previous_chat_history: list = field(default_factory=list) #the chat history from last scene
+    generated_states: dict = field(default_factory=dict) #whne the entity_ai needs to generate states in the flow itself for the testing questions
     trolling: int = 0
-    end_reason: str = ""
+    end_reason: str = "" #the reason the conversation ended, for example "end_conversation" (will start scene change), "needs_input" (stop generation, wait for user message), "trolling" (the user didnt answer), "forward" (the ai is still going to generate)
     print_response: bool = True
 
     def to_json(self):
@@ -101,10 +106,23 @@ async def gpt_call(messages,temperature=0.4):
             break
 
 #chat flow
-async def handle_chat(c:ChatState,usr_msg_sent:str):
+async def handle_chat(c:ChatState,request_body:dict):
+    usr_msg_sent = request_body.get("user_msg", "")
+    if ("end_conversation" in request_body and request_body["end_conversation"]):
+        c.end_reason = "end_conversation"
+        c.previous_chat_history = c.chat_history.copy()
+        c.chat_history = []
+        c.ai_msg = ""
+        c.user_msg = ""
+        c.current_state = "introduction"
+        c.previous_scene = c.current_scene
+        c.current_scene = CONFIGS[c.current_scene]["exit_scene"]
+        return
+
+    #get flow
     print(c.current_state)
-    flow = ENTITY_FLOW[c.current_state]
-    c.system_msg = ENTITY_SYSTEM + "\n" + c.memory
+    flow = FLOWS[c.current_scene][c.current_state]
+    c.system_msg = SYSTEM_MSGS[c.current_scene] + "\n" + c.memory
     if (c.jazyk): c.system_msg += "\n" + LANGUAGES[c.jazyk]
 
     #trolling too much
@@ -155,9 +173,18 @@ async def handle_chat(c:ChatState,usr_msg_sent:str):
     if ("permanent_memory" in flow):
         c.memory += f"\n{flow['permanent_memory'].replace('{{ai_msg}}',response)}"
 
-    #end conversation
+    #end conversation - scene will change, so clear history etc and load new character
+    #when end conversation in flow there must also be a scene change
     if ("end_conversation" in flow and flow["end_conversation"]):
         c.end_reason = "end_conversation"
+        c.previous_chat_history = c.chat_history.copy()
+        c.chat_history = []
+        c.ai_msg = ""
+        c.user_msg = ""
+        c.previous_scene = c.current_scene
+        c.current_state = "introduction"
+        c.current_scene = flow["scene_change"]
+        return
     
     #get next state
     for key, value in flow["choices"].items():
@@ -174,7 +201,7 @@ def get_unique_id():
     return {"id": unique_id}
 
 ## Stream the response of gpt
-async def stream_generator(unique_id: str,user_msg):
+async def stream_generator(unique_id: str,request_body:dict):
     chat_state = get_or_create_chat_state(unique_id)
     if (chat_state.processing):
         print("processing")
@@ -186,10 +213,10 @@ async def stream_generator(unique_id: str,user_msg):
            
             i = 0
             while (i == 0 or chat_state.end_reason == "" or chat_state.end_reason == "forward"):
-                async for response in handle_chat(chat_state,user_msg):
+                async for response in handle_chat(chat_state,request_body):
                     response_data = json.dumps({"ai_speaking": chat_state.ai_msg})
                     i += 1
-                    print(response_data)
+                    #print(response_data)
                     if (chat_state.print_response):
                         yield f"data: {response_data}\n\n"  # Ensure SSE format
 
@@ -206,9 +233,13 @@ async def stream_generator(unique_id: str,user_msg):
             print_exc()
             raise e
         
-@app.get("/chat/{unique_id}")
-async def read_stream(unique_id: str, user_msg: str = Query(...)):
-    return StreamingResponse(stream_generator(unique_id,user_msg), media_type="text/event-stream")
+class UserMessage(BaseModel):
+    user_msg: str
+        
+@app.post("/chat/{unique_id}")
+async def read_stream(request: Request, unique_id: str):
+    body = await request.json()
+    return StreamingResponse(stream_generator(unique_id,body), media_type="text/event-stream")
 
 @app.get("/chat_state/{unique_id}")
 def get_chat_state(unique_id: str):
