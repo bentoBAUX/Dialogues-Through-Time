@@ -16,8 +16,8 @@ The chat history with {{previous_state}} is as follows:
 
 Speak in an understandable way, dont use any complicated words. Speak like a divine being.
 Don't generate the dialogue, just reply to the user message.
-After every sentence, you write ';;'. (example: 'Hello user.;; How are you?;;')
-""".strip()
+
+""".strip()#After every sentence, you write ';;'. (example: 'Hello user.;; How are you?;;')
 
 ENTITY_TEST_CONFIG = {
     "exit_scene":"entity_test",
