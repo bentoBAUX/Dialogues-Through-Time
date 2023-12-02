@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using SimpleJSON;
 
 
 public class test : MonoBehaviour
@@ -87,7 +88,7 @@ public class test : MonoBehaviour
     //stream
    private string GetChatUrl(string uniqueId)
     {
-        return $"{serverUrl}/chat/{uniqueId}?user_msg={UnityWebRequest.EscapeURL(chatMsg)}";
+        return $"{serverUrl}/chat/{uniqueId}";
     }
 
     IEnumerator ReadStream(string id)

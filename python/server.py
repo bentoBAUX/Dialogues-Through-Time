@@ -36,7 +36,7 @@ r = redis.StrictRedis(host='msai.redis.cache.windows.net', port=6380, password=R
 class ChatState:
     processing: bool = False #if openai is currently replying, dont allow new requests
     current_state: str = "introduction" #current state of the conversation flow json
-    current_scene: str = "socrates" #the current person to talk to = scene in unity that should be active
+    current_scene: str = "entity" #the current person to talk to = scene in unity that should be active
     previous_scene: str = "" #the previous scene
     user_msg: str = "" #the last message the user sent
     ai_msg: str = "" #the last message the ai sent
@@ -45,10 +45,12 @@ class ChatState:
     jazyk: str = "EN" 
     chat_history: list = field(default_factory=list) #current conversation history
     previous_chat_history: list = field(default_factory=list) #the chat history from last scene
+    render_chat_history: list = field(default_factory=list) #chat history but where user messages are without the prompt templastes. for rendering in unity
     generated_states: dict = field(default_factory=dict) #whne the entity_ai needs to generate states in the flow itself for the testing questions
     trolling: int = 0
     end_reason: str = "" #the reason the conversation ended, for example "end_conversation" (will start scene change), "needs_input" (stop generation, wait for user message), "trolling" (the user didnt answer), "forward" (the ai is still going to generate)
     print_response: bool = True
+    streaming: bool = False # just for the unity client to know that streaming stopped when he sees this
 
     def to_json(self):
         return json.dumps(self.__dict__)
@@ -169,6 +171,10 @@ async def handle_chat(c:ChatState,request_body:dict):
     if ("save_ai_msg" in flow and flow["save_ai_msg"]):
         c.chat_history.append({"role":"assistant","content":response})
 
+    #save render chat history
+    if ("print_response" in flow and flow["print_response"]):
+        c.render_chat_history.append({"role":"assistant","content":response})
+
     #save extracted ai thing to memory
     if ("permanent_memory" in flow):
         c.memory += f"\n{flow['permanent_memory'].replace('{{ai_msg}}',response)}"
@@ -201,49 +207,60 @@ def get_unique_id():
     return {"id": unique_id}
 
 ## Stream the response of gpt
-async def stream_generator(unique_id: str,request_body:dict):
+async def stream_generator(request_body:dict):
+    unique_id = request_body.get("unique_id", None)
+    
+    if (not unique_id):
+        raise Exception("Unique id is none")
+
     chat_state = get_or_create_chat_state(unique_id)
     if (chat_state.processing):
-        print("processing")
-        raise Exception("processing and got a streaming call")
-    else:
-        try:
-            chat_state.processing = True
-            set_chat_state(unique_id, chat_state)
-           
-            i = 0
-            while (i == 0 or chat_state.end_reason == "" or chat_state.end_reason == "forward"):
-                async for response in handle_chat(chat_state,request_body):
-                    response_data = json.dumps({"ai_speaking": chat_state.ai_msg})
-                    i += 1
-                    #print(response_data)
-                    if (chat_state.print_response):
-                        yield f"data: {response_data}\n\n"  # Ensure SSE format
+        print("processing and accessing again????")
+        #raise Exception("processing and got a streaming call")
+    
+    try:
+        #init
+        chat_state.processing = True
+        set_chat_state(unique_id, chat_state)
 
-            chat_state.processing = False
-            set_chat_state(unique_id, chat_state)
-            response_data = json.dumps(chat_state.to_json())
-            yield response_data.encode('utf-8') 
+        #set chatrender user msg
+        chat_state.render_chat_history.append({"role":"user","content":request_body.get("user_msg", "")})
+        
+        i = 0
+        while (i == 0 or chat_state.end_reason == "" or chat_state.end_reason == "forward"):
+            async for response in handle_chat(chat_state,request_body):
+                response_data = json.dumps({"ai_speaking": chat_state.ai_msg})
+                i += 1
+                print(response_data) #TODO: fix bug where when entity says two messages at a time, it then first first shows firs buubble, then second and then both at a time
+                if (chat_state.print_response):
+                    yield f"data: {response_data}\n\n"  # Ensure SSE format
 
-        #reset processing
-        except Exception as e:
-            chat_state.processing = False
-            set_chat_state(unique_id, chat_state)
-            print("exception")
-            print_exc()
-            raise e
+        chat_state.processing = False
+        set_chat_state(unique_id, chat_state)
+        response_data = chat_state.to_json()
+        await asyncio.sleep(0.5)
+        yield response_data.encode('utf-8') 
+
+    #reset processing
+    except Exception as e:
+        chat_state.processing = False
+        set_chat_state(unique_id, chat_state)
+        print("exception")
+        print_exc()
+        raise e
         
 class UserMessage(BaseModel):
     user_msg: str
         
-@app.post("/chat/{unique_id}")
-async def read_stream(request: Request, unique_id: str):
+@app.post("/chat")
+async def read_stream(request: Request):
     body = await request.json()
-    return StreamingResponse(stream_generator(unique_id,body), media_type="text/event-stream")
+    return StreamingResponse(stream_generator(body), media_type="text/event-stream")
 
-@app.get("/chat_state/{unique_id}")
-def get_chat_state(unique_id: str):
-    return get_or_create_chat_state(unique_id)
+@app.get("/chat_history/{unique_id}")
+def get_chat_history(unique_id: str):
+    chat_state = get_or_create_chat_state(unique_id)
+    return chat_state.__dict__
 
 if __name__ == "__main__":
-    uvicorn.run("server:app",host="0.0.0.0",port=5000)
+    uvicorn.run("server:app",host="0.0.0.0",port=5000,reload=True)
