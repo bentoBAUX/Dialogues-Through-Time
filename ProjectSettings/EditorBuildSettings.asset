@@ -5,13 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Socrates.unity
-    guid: 4c89088708e80864399da2acddb032ea
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 09aa59b5972397f4c98fdc6ace5c6906
+  - enabled: 1
+    path: Assets/Scenes/Entity.unity
+    guid: 44629565119cf7c4e8ff5534118b0ac8
+  - enabled: 1
+    path: Assets/Scenes/Socrates.unity
+    guid: 4c89088708e80864399da2acddb032ea
+  - enabled: 1
+    path: Assets/Scenes/Jesus.unity
+    guid: 952cc08f994280843a70036dcbfa080a
+  - enabled: 1
+    path: Assets/Scenes/LeoDaVinci.unity
+    guid: 16093f7985d1d2a418c8f278714a6510
   m_configObjects: {}
