@@ -14,6 +14,10 @@ using SimpleJSON;
 
 public class ChatManager : MonoBehaviour
 {
+
+    public AnimCtrl currentCharacter;
+
+    
     public GameObject chatPanel;
     
     public GameObject playerTextBubble;
@@ -37,12 +41,23 @@ public class ChatManager : MonoBehaviour
       //get id
       LoadUniqueId();
       FetchAndSetChatHistory();
+
+      /*example of setting triggers
+      currentCharacter.Talk();
+      currentCharacter.Idle();
+      */
     }
 
 
 
   void Update()
   {
+      //test animation trigger
+      if (Input.GetKeyDown(KeyCode.A))
+      {
+        currentCharacter.Talk();
+      }
+      //
       if (chatBox.text != "")
       {
           if (Input.GetKeyDown(KeyCode.Return) && !string.IsNullOrEmpty(uniqueId))
