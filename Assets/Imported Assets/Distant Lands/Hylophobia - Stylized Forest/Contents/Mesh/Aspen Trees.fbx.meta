@@ -1,0 +1,222 @@
+fileFormatVersion: 2
+guid: 7f2a6dea318e1b04a828add82e57a011
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Aspen 1
+    100002: Aspen 2
+    100004: Aspen 3
+    100006: Aspen 4
+    100008: Aspen 5
+    100010: //RootNode
+    100012: Aspen 1 Dead
+    100014: Aspen 1 Dead LOD 1
+    100016: Aspen 1 LOD 1
+    100018: Aspen 1 LOD 2
+    100020: Aspen 2 Dead
+    100022: Aspen 2 Dead LOD 1
+    100024: Aspen 2 LOD 1
+    100026: Aspen 2 LOD 2
+    100028: Aspen 3 Dead
+    100030: Aspen 3 Dead LOD 1
+    100032: Aspen 3 LOD 1
+    100034: Aspen 3 LOD 2
+    100036: Aspen 4 Dead
+    100038: Aspen 4 Dead LOD 1
+    100040: Aspen 4 LOD 1
+    100042: Aspen 4 LOD 2
+    100044: Aspen 5 Dead
+    100046: Aspen 5 Dead LOD 1
+    100048: Aspen 5 LOD 1
+    100050: Aspen 5 LOD 2
+    400000: Aspen 1
+    400002: Aspen 2
+    400004: Aspen 3
+    400006: Aspen 4
+    400008: Aspen 5
+    400010: //RootNode
+    400012: Aspen 1 Dead
+    400014: Aspen 1 Dead LOD 1
+    400016: Aspen 1 LOD 1
+    400018: Aspen 1 LOD 2
+    400020: Aspen 2 Dead
+    400022: Aspen 2 Dead LOD 1
+    400024: Aspen 2 LOD 1
+    400026: Aspen 2 LOD 2
+    400028: Aspen 3 Dead
+    400030: Aspen 3 Dead LOD 1
+    400032: Aspen 3 LOD 1
+    400034: Aspen 3 LOD 2
+    400036: Aspen 4 Dead
+    400038: Aspen 4 Dead LOD 1
+    400040: Aspen 4 LOD 1
+    400042: Aspen 4 LOD 2
+    400044: Aspen 5 Dead
+    400046: Aspen 5 Dead LOD 1
+    400048: Aspen 5 LOD 1
+    400050: Aspen 5 LOD 2
+    2100000: Bark
+    2100002: Leaves
+    2100004: Bark 2
+    2300000: Aspen 1
+    2300002: Aspen 2
+    2300004: Aspen 3
+    2300006: Aspen 4
+    2300008: Aspen 5
+    2300010: Aspen 1 Dead
+    2300012: Aspen 1 Dead LOD 1
+    2300014: Aspen 1 LOD 1
+    2300016: Aspen 1 LOD 2
+    2300018: Aspen 2 Dead
+    2300020: Aspen 2 Dead LOD 1
+    2300022: Aspen 2 LOD 1
+    2300024: Aspen 2 LOD 2
+    2300026: Aspen 3 Dead
+    2300028: Aspen 3 Dead LOD 1
+    2300030: Aspen 3 LOD 1
+    2300032: Aspen 3 LOD 2
+    2300034: Aspen 4 Dead
+    2300036: Aspen 4 Dead LOD 1
+    2300038: Aspen 4 LOD 1
+    2300040: Aspen 4 LOD 2
+    2300042: Aspen 5 Dead
+    2300044: Aspen 5 Dead LOD 1
+    2300046: Aspen 5 LOD 1
+    2300048: Aspen 5 LOD 2
+    3300000: Aspen 1
+    3300002: Aspen 2
+    3300004: Aspen 3
+    3300006: Aspen 4
+    3300008: Aspen 5
+    3300010: Aspen 1 Dead
+    3300012: Aspen 1 Dead LOD 1
+    3300014: Aspen 1 LOD 1
+    3300016: Aspen 1 LOD 2
+    3300018: Aspen 2 Dead
+    3300020: Aspen 2 Dead LOD 1
+    3300022: Aspen 2 LOD 1
+    3300024: Aspen 2 LOD 2
+    3300026: Aspen 3 Dead
+    3300028: Aspen 3 Dead LOD 1
+    3300030: Aspen 3 LOD 1
+    3300032: Aspen 3 LOD 2
+    3300034: Aspen 4 Dead
+    3300036: Aspen 4 Dead LOD 1
+    3300038: Aspen 4 LOD 1
+    3300040: Aspen 4 LOD 2
+    3300042: Aspen 5 Dead
+    3300044: Aspen 5 Dead LOD 1
+    3300046: Aspen 5 LOD 1
+    3300048: Aspen 5 LOD 2
+    4300000: Aspen 1
+    4300002: Aspen 2
+    4300004: Aspen 3
+    4300006: Aspen 5
+    4300008: Aspen 4
+    4300010: Aspen 1 LOD 1
+    4300012: Aspen 2 LOD 1
+    4300014: Aspen 3 LOD 1
+    4300016: Aspen 5 LOD 1
+    4300018: Aspen 4 LOD 1
+    4300020: Aspen 1 LOD 2
+    4300022: Aspen 2 LOD 2
+    4300024: Aspen 3 LOD 2
+    4300026: Aspen 5 LOD 2
+    4300028: Aspen 4 LOD 2
+    4300030: Aspen 1 Dead
+    4300032: Aspen 2 Dead
+    4300034: Aspen 3 Dead
+    4300036: Aspen 5 Dead
+    4300038: Aspen 4 Dead
+    4300040: Aspen 1 Dead LOD 1
+    4300042: Aspen 2 Dead LOD 1
+    4300044: Aspen 3 Dead LOD 1
+    4300046: Aspen 5 Dead LOD 1
+    4300048: Aspen 4 Dead LOD 1
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
