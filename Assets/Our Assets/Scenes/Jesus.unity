@@ -2174,6 +2174,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Start chatting...
       objectReference: {fileID: 0}
+    - target: {fileID: 980407836522459263, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_text
+      value: Jesus
+      objectReference: {fileID: 0}
     - target: {fileID: 2258005881703160737, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
       propertyPath: m_SizeDelta.y

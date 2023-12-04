@@ -4832,6 +4832,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1446770791}
     m_Modifications:
+    - target: {fileID: 980407836522459263, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_text
+      value: Socrates
+      objectReference: {fileID: 0}
     - target: {fileID: 2258005881703160737, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -4844,8 +4849,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3468502011538822252, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
-      propertyPath: m_Size
-      value: 0.55629367
+      propertyPath: m_Value
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5984841199464548850, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
@@ -4855,6 +4860,11 @@ PrefabInstance:
     - target: {fileID: 5984841199464548850, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984841199464548850, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6173978486633422194, guid: e2cba27449e97b54f986d98468f835be,

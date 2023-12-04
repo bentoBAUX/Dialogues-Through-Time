@@ -973,6 +973,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 980407836522459263, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_text
+      value: The Entity
+      objectReference: {fileID: 0}
     - target: {fileID: 1186551644423966227, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
       propertyPath: m_Spacing
