@@ -10,43 +10,45 @@ using UnityEngine.UI;
 
 using UnityEngine.Networking;
 using SimpleJSON;
-
+using UnityEngine.SceneManagement;
 
 public class ChatManager : MonoBehaviour
 {
 
-    public AnimCtrl currentCharacter;
+  public AnimCtrl currentCharacter;
 
     
-    public GameObject chatPanel;
+  public GameObject chatPanel;
     
-    public GameObject playerTextBubble;
+  public GameObject playerTextBubble;
 
-    public GameObject AITextBubble;
+  public GameObject AITextBubble;
 
     
-    public TMP_InputField chatBox;
+  public TMP_InputField chatBox;
 
-    [SerializeField] private bool playerSent = false;
+  [SerializeField] private bool playerSent = false;
     
-    [SerializeField]
-    private List<Message> messageList = new List<Message>();
+  [SerializeField]
+  private List<Message> messageList = new List<Message>();
 
-    private string uniqueId = "";
-    private string serverUrl = "http://127.0.0.1:5000"; 
-    private bool processing = false;
+  private string uniqueId = "";
+  private bool processing = false;
 
-    void Start()
-    {
-      //get id
-      LoadUniqueId();
-      FetchAndSetChatHistory();
 
-      /*example of setting triggers
-      currentCharacter.Talk();
-      currentCharacter.Idle();
-      */
-    }
+
+  void Start()
+  {
+    //get id 
+    LoadUniqueId();
+    FetchAndSetChatHistory();
+    StartCoroutine(StartPostChatStreamAfterDelay("I was gone for a while but i am back now. greetings.", false));
+
+    /*example of setting triggers
+    currentCharacter.Talk();
+    currentCharacter.Idle();
+    */
+   }
 
 
 
@@ -77,8 +79,13 @@ public class ChatManager : MonoBehaviour
     if (Input.GetKeyDown(KeyCode.F4))
     {
       removeSavedUniqueId();
-      LoadUniqueId();
       ClearChatHistory();
+      SceneManager.LoadScene("Entity");
+    }
+    if (Input.GetKeyDown(KeyCode.F5))
+    {
+      removeSavedUniqueId();
+      SceneManager.LoadScene("Intro");
     }
   }
 
@@ -99,7 +106,7 @@ public class ChatManager : MonoBehaviour
 
   IEnumerator GetUniqueIdFromServer()
   {
-    using (UnityWebRequest webRequest = UnityWebRequest.Get(serverUrl + "/get_unique_id"))
+    using (UnityWebRequest webRequest = UnityWebRequest.Get(Utilities.serverUrl + "/get_unique_id"))
     {
       // Request and wait for the desired page.
       yield return webRequest.SendWebRequest();
@@ -145,10 +152,16 @@ public class ChatManager : MonoBehaviour
   #region ///send chat to api
   private string GetChatUrl()
   {
-    return $"{serverUrl}/chat";
+    return $"{Utilities.serverUrl}/chat";
   }
 
-  IEnumerator PostChatStream(string message)
+  IEnumerator StartPostChatStreamAfterDelay(string message, bool someBoolean)
+  {
+    yield return new WaitForSeconds(2); // Wait for 3 seconds
+    StartCoroutine(PostChatStream(message, someBoolean));
+  }
+
+  IEnumerator PostChatStream(string message,bool player_bubble = true)
   {
     if (processing)
 		{
@@ -159,27 +172,25 @@ public class ChatManager : MonoBehaviour
     //init
     processing = true;
     chatBox.text = "";
-    SendMessageToChat(message, Message.MessageType.playerMessage);
+    if (player_bubble) SendMessageToChat(message, Message.MessageType.playerMessage);
 
     // Create a JSON object and add the message with proper escaping
     var jsonNodeSend = new JSONObject();
     jsonNodeSend.Add("user_msg", new JSONString(message));
     jsonNodeSend.Add("unique_id", new JSONString(GetSavedUniqueId()));
 
-    // Convert the JSON object to a string, which will be properly escaped
-    string jsonData = jsonNodeSend.ToString();
-    byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);
+    // URL encode the message and unique ID
+    string encodedMessage = UnityWebRequest.EscapeURL(message);
+    string encodedUniqueId = UnityWebRequest.EscapeURL(GetSavedUniqueId());
+
+    // Construct the GET URL with query parameters
+    string url = GetChatUrl() + $"?user_msg={encodedMessage}&unique_id={encodedUniqueId}";
 
     // Create a POST UnityWebRequest
-   using (UnityWebRequest request = new UnityWebRequest(GetChatUrl(), "POST"))
+    using (UnityWebRequest request = UnityWebRequest.Get(url))
     {
-      request.uploadHandler = new UploadHandlerRaw(bodyRaw);
       request.downloadHandler = new DownloadHandlerBuffer();
-      request.SetRequestHeader("Content-Type", "application/json");
-
-      // Send the request
       request.SendWebRequest();
-
       bool streamEnded = false;
       string lastResponse = "";
 
@@ -187,7 +198,7 @@ public class ChatManager : MonoBehaviour
       Message messageBox = SendMessageToChat("", Message.MessageType.AIMessage);
 
       //start adding text to the message box
-      while (!streamEnded)
+      while (!streamEnded)//(!streamEnded)
       {
 
         if (request.result == UnityWebRequest.Result.ConnectionError ||
@@ -206,6 +217,7 @@ public class ChatManager : MonoBehaviour
           string response = request.downloadHandler.text;
           if (response != lastResponse)
           {
+            currentCharacter.Talk();
             string newData = response.Substring(lastResponse.Length);
             if (!string.IsNullOrEmpty(newData))
             {
@@ -214,26 +226,39 @@ public class ChatManager : MonoBehaviour
               if (chatJson.HasKey("ai_speaking"))
               {
                 string aiResponse = chatJson["ai_speaking"];
-                Debug.Log(aiResponse);
+                //Debug.Log(aiResponse);
+                //if server sending second bubble
+                if (aiResponse.Length < messageBox.text.Length ) messageBox = SendMessageToChat("", Message.MessageType.AIMessage);
                 messageBox.text = aiResponse;
                 messageBox.textObject.text = aiResponse;
               }
 
-              Debug.Log(chatJson);
+              //Debug.Log(chatJson);
 
               //end streaming if json says it
               streamEnded = chatJson.HasKey("streaming");
 
               ///Things that happen after finishes talking
-              //set chat history
-              if (streamEnded && chatJson.HasKey("render_chat_history")) SetChatHistory(chatJson["render_chat_history"].AsArray);
 
               //end conversation and change scene
-              if (streamEnded && chatJson["end_reason"] == "end_conversation")
-							{
-                Debug.Log("Scene should change to " + chatJson["current_scene"]);
-                //TODO: make transition, change scene
-							}
+              if (streamEnded)
+              {
+                currentCharacter.Idle();
+                if (chatJson["end_reason"] == "end_conversation")
+                {
+                  if (Utilities.sceneMap.TryGetValue(chatJson["current_scene"], out string value))
+                  {
+                    StartCoroutine(ChangeSceneWithDelay(value));
+                  }
+                  else
+                  {
+                    Debug.LogError("Scene from server doesnt exist!" + chatJson["current_scene"]);
+                  }
+                }
+
+                //set chat history
+                if (chatJson.HasKey("render_chat_history") && chatJson["end_reason"] != "end_conversation") SetChatHistory(chatJson["render_chat_history"].AsArray);
+              }
             }
 
             lastResponse = response;
@@ -249,6 +274,13 @@ public class ChatManager : MonoBehaviour
     }
   }
 
+  IEnumerator ChangeSceneWithDelay(string sceneName)
+  {
+    yield return new WaitForSeconds(2); // Wait for 4 seconds
+    SceneManager.LoadScene(sceneName);
+  }
+
+
   public void FetchAndSetChatHistory()
   {
     StartCoroutine(GetChatHistoryCoroutine());
@@ -256,7 +288,7 @@ public class ChatManager : MonoBehaviour
 
   private IEnumerator GetChatHistoryCoroutine()
   {
-    string url = $"{serverUrl}/chat_history/{GetSavedUniqueId()}";
+    string url = $"{Utilities.serverUrl}/chat_history/{GetSavedUniqueId()}";
     using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
     {
       // Request and wait for the desired page.
@@ -285,7 +317,8 @@ public class ChatManager : MonoBehaviour
     {
       if (message.textObject != null)
       {
-        Destroy(message.textObject.gameObject);
+        // Destroy the parent GameObject of the textObject, which is the text bubble
+        Destroy(message.textObject.transform.parent.gameObject);
       }
     }
     messageList.Clear();
@@ -299,6 +332,8 @@ public class ChatManager : MonoBehaviour
     {
       string role = chatItem["role"];
       string content = chatItem["content"];
+
+      if (content == "I was gone for a while but i am back now. greetings.") continue;
 
       Message.MessageType messageType = role == "user" ? Message.MessageType.playerMessage : Message.MessageType.AIMessage;
       SendMessageToChat(content, messageType);
