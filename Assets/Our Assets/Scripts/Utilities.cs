@@ -12,7 +12,7 @@ public class Utilities : MonoBehaviour
     {"entity_test", "Entity"},
     {"socrates", "Socrates" },
     {"jesus", "Jesus" },
-    {"leonardo_davinci","LeoDaVinci" }
+    {"leonardo","LeoDaVinci" }
   };
 
   // Start is called before the first frame update

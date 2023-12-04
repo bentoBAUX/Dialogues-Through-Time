@@ -54,12 +54,7 @@ public class ChatManager : MonoBehaviour
 
   void Update()
   {
-      //test animation trigger
-      if (Input.GetKeyDown(KeyCode.A))
-      {
-        currentCharacter.Talk();
-      }
-      //
+      //send text
       if (chatBox.text != "")
       {
           if (Input.GetKeyDown(KeyCode.Return) && !string.IsNullOrEmpty(uniqueId))
@@ -87,6 +82,12 @@ public class ChatManager : MonoBehaviour
       removeSavedUniqueId();
       SceneManager.LoadScene("Intro");
     }
+
+    //end conversation
+    if (Input.GetKeyDown(KeyCode.F10))
+		{
+      StartCoroutine(PostChatStream("",false,true));
+		}
   }
 
 	#region /// get ID
@@ -161,7 +162,7 @@ public class ChatManager : MonoBehaviour
     StartCoroutine(PostChatStream(message, someBoolean));
   }
 
-  IEnumerator PostChatStream(string message,bool player_bubble = true)
+  IEnumerator PostChatStream(string message,bool player_bubble = true,bool end_conversation = false)
   {
     if (processing)
 		{
@@ -174,17 +175,12 @@ public class ChatManager : MonoBehaviour
     chatBox.text = "";
     if (player_bubble) SendMessageToChat(message, Message.MessageType.playerMessage);
 
-    // Create a JSON object and add the message with proper escaping
-    var jsonNodeSend = new JSONObject();
-    jsonNodeSend.Add("user_msg", new JSONString(message));
-    jsonNodeSend.Add("unique_id", new JSONString(GetSavedUniqueId()));
-
     // URL encode the message and unique ID
     string encodedMessage = UnityWebRequest.EscapeURL(message);
     string encodedUniqueId = UnityWebRequest.EscapeURL(GetSavedUniqueId());
 
     // Construct the GET URL with query parameters
-    string url = GetChatUrl() + $"?user_msg={encodedMessage}&unique_id={encodedUniqueId}";
+    string url = GetChatUrl() + $"?user_msg={encodedMessage}&unique_id={encodedUniqueId}&end_conversation={end_conversation}";
 
     // Create a POST UnityWebRequest
     using (UnityWebRequest request = UnityWebRequest.Get(url))
