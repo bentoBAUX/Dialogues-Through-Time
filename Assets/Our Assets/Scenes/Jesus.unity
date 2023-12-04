@@ -2169,6 +2169,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1157908592}
     m_Modifications:
+    - target: {fileID: 66188822535447144, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_text
+      value: Start chatting...
+      objectReference: {fileID: 0}
     - target: {fileID: 2258005881703160737, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -3350,7 +3355,7 @@ PrefabInstance:
     - target: {fileID: 967766239900329298, guid: 007d456420e5a204db45ec7ecc71a0f7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.802007
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 967766239900329298, guid: 007d456420e5a204db45ec7ecc71a0f7,
         type: 3}

@@ -182,8 +182,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dialogues through Time
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f53d54f5c452fec48ba14c3c7d370209, type: 2}
-  m_sharedMaterial: {fileID: 9055839478054947837, guid: f53d54f5c452fec48ba14c3c7d370209,
+  m_fontAsset: {fileID: 11400000, guid: 3a4298f46e4fa6846ba889ba69ddaac5, type: 2}
+  m_sharedMaterial: {fileID: -8981015313589361040, guid: 3a4298f46e4fa6846ba889ba69ddaac5,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 33
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
