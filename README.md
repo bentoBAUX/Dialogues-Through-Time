@@ -7,7 +7,7 @@
 
 [Link to FastAPI backend](https://github.com/ArmykOliva/dialogues_through_time_api)
 
-[Watch our overview Video](https://youtu.be/link_to_youtube_video)
+[Watch our overview Video](https://www.youtube.com/watch?v=FxS6ehhNVrc)
 
 ## Features
 - **3D Interactive Environments**: Step into beautifully rendered historical settings.
