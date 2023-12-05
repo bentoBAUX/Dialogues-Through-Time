@@ -332,8 +332,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11500000, guid: 71f8067d0d3dcac48a69e09fd0500ccb,
-        type: 3}
+      objectReference: {fileID: 1315960960}
     - target: {fileID: 1066019280674852419, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -342,7 +341,12 @@ PrefabInstance:
     - target: {fileID: 1066019280674852419, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: LeaveChat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066019280674852419, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChatManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1066019280674852419, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
@@ -4245,6 +4249,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1315960958}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1315960960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 715780169575932838, guid: 58c25e71716ffa04480f04e23b7c0bee,
+    type: 3}
+  m_PrefabInstance: {fileID: 1315960958}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f8067d0d3dcac48a69e09fd0500ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1323372003
 PrefabInstance:
   m_ObjectHideFlags: 0
