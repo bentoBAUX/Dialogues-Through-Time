@@ -353,6 +353,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6173978486633422194, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9191044329768015488, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5648,6 +5653,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -6.06464
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421665159151397721, guid: 02d0608d4784da64d8313280cfec9966,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1830435612091304220, guid: 02d0608d4784da64d8313280cfec9966,
         type: 3}

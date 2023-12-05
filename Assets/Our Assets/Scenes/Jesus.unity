@@ -513,12 +513,12 @@ PrefabInstance:
     - target: {fileID: 1807427120875178991, guid: 747c2e4b3ae54624ab8550f5a2416198,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9993267
+      value: 0.9984258
       objectReference: {fileID: 0}
     - target: {fileID: 1807427120875178991, guid: 747c2e4b3ae54624ab8550f5a2416198,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.036689486
+      value: -0.056089204
       objectReference: {fileID: 0}
     - target: {fileID: 1807427120875178991, guid: 747c2e4b3ae54624ab8550f5a2416198,
         type: 3}
@@ -533,7 +533,7 @@ PrefabInstance:
     - target: {fileID: 1807427120875178991, guid: 747c2e4b3ae54624ab8550f5a2416198,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -4.205
+      value: -6.431
       objectReference: {fileID: 0}
     - target: {fileID: 1807427120875178991, guid: 747c2e4b3ae54624ab8550f5a2416198,
         type: 3}
@@ -2333,6 +2333,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6173978486633422194, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9191044329768015488, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3653,6 +3658,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258363962909788565, guid: d51f6bbabad72e046bf4fd0a886d3585,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8258363962909788565, guid: d51f6bbabad72e046bf4fd0a886d3585,
         type: 3}
