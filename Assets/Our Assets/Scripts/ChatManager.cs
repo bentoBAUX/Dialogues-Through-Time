@@ -42,12 +42,13 @@ public class ChatManager : MonoBehaviour
     LoadUniqueId();
     FetchAndSetChatHistory();
     StartCoroutine(StartPostChatStreamAfterDelay("I was gone for a while but i am back now. greetings.", false));
-
+		currentCharacter.Idle();
+		
     /*example of setting triggers
     currentCharacter.Talk();
     currentCharacter.Idle();
     */
-   }
+	}
 
 
 
@@ -85,9 +86,14 @@ public class ChatManager : MonoBehaviour
     //end conversation
     if (Input.GetKeyDown(KeyCode.F10))
 		{
-      StartCoroutine(PostChatStream("",false,true));
+      LeaveChat();
 		}
   }
+
+  public void LeaveChat()
+  {
+		StartCoroutine(PostChatStream("", false, true));
+	}
 
 	#region /// get ID
 	void LoadUniqueId()
@@ -188,12 +194,17 @@ public class ChatManager : MonoBehaviour
       request.SendWebRequest();
       bool streamEnded = false;
       string lastResponse = "";
+      bool talking = false;
 
       //create message box
       Message messageBox = SendMessageToChat("", Message.MessageType.AIMessage);
 
-      //start adding text to the message box
-      while (!streamEnded)//(!streamEnded)
+			//timeout
+			float timeSinceLastUpdate = 0f;
+			float timeoutDuration = 30f; // 30 seconds timeout duration
+
+			//start adding text to the message box
+			while (!streamEnded)//(!streamEnded)
       {
 
         if (request.result == UnityWebRequest.Result.ConnectionError ||
@@ -212,7 +223,17 @@ public class ChatManager : MonoBehaviour
           string response = request.downloadHandler.text;
           if (response != lastResponse)
           {
-            currentCharacter.Talk();
+						// Reset the timeout tracker on receiving new data
+						timeSinceLastUpdate = 0f;
+						
+            //set talking animation
+            if (!talking)
+            {
+							currentCharacter.Talk();
+              talking = true;
+						}
+
+            //handle data
             string newData = response.Substring(lastResponse.Length);
             if (!string.IsNullOrEmpty(newData))
             {
@@ -221,14 +242,13 @@ public class ChatManager : MonoBehaviour
               if (chatJson.HasKey("ai_speaking"))
               {
                 string aiResponse = chatJson["ai_speaking"];
-                //Debug.Log(aiResponse);
                 //if server sending second bubble
                 if (aiResponse.Length < messageBox.text.Length ) messageBox = SendMessageToChat("", Message.MessageType.AIMessage);
                 messageBox.text = aiResponse;
                 messageBox.textObject.text = aiResponse;
               }
 
-              //Debug.Log(chatJson);
+              Debug.Log(chatJson);
 
               //end streaming if json says it
               streamEnded = chatJson.HasKey("streaming");
@@ -238,7 +258,6 @@ public class ChatManager : MonoBehaviour
               //end conversation and change scene
               if (streamEnded)
               {
-                currentCharacter.Idle();
                 if (chatJson["end_reason"] == "end_conversation")
                 {
                   if (Utilities.sceneMap.TryGetValue(chatJson["current_scene"], out string value))
@@ -260,11 +279,21 @@ public class ChatManager : MonoBehaviour
           }
         }
 
-        // Wait before checking for more data
-        yield return new WaitForSeconds(0.2f);
+				// Check for timeout
+				timeSinceLastUpdate += Time.deltaTime;
+				if (timeSinceLastUpdate >= timeoutDuration)
+				{
+					processing = false;
+					Debug.LogError("Timeout Error: No response received for " + timeoutDuration + " seconds.");
+					yield break;
+				}
+
+				// Wait before checking for more data
+				yield return new WaitForSeconds(0.2f);
       }
 
-      processing = false;
+			currentCharacter.Idle();
+			processing = false;
       Debug.Log("end");
     }
   }

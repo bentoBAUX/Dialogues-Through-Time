@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Utilities : MonoBehaviour
 {
-  public static string serverUrl = "https://dialoguesthroughtime.azurewebsites.net";
+  public static string serverUrl = "http://127.0.0.1";
 
   public static  Dictionary<string, string> sceneMap = new Dictionary<string, string>()
   {
