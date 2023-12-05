@@ -318,6 +318,37 @@ PrefabInstance:
       propertyPath: m_text
       value: Leonardo Da Vinci
       objectReference: {fileID: 0}
+    - target: {fileID: 1066019280674852419, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066019280674852419, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066019280674852419, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: 71f8067d0d3dcac48a69e09fd0500ccb,
+        type: 3}
+    - target: {fileID: 1066019280674852419, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066019280674852419, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066019280674852419, guid: e2cba27449e97b54f986d98468f835be,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: LeaveButton, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2258005881703160737, guid: e2cba27449e97b54f986d98468f835be,
         type: 3}
       propertyPath: m_SizeDelta.y
