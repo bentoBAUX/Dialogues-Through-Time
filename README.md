@@ -41,4 +41,4 @@ To connect the frontend to your backend server:
 The frontend architecture is designed to seamlessly interface with our FastAPI backend, processing AI responses and rendering dynamic content based on player interactions.
 
 ## License
-This project is under the [MIT License](LICENSE).
+This project is under the [MIT License](LICENSE.txt).
