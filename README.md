@@ -5,7 +5,7 @@
 
 ![Dialogues Through Time Game Image](https://github.com/ArmykOliva/dialogues_through_time_api/blob/main/pictures/Screenshot_1.png?raw=true)
 
-[Link to FastAPI backend]https://github.com/ArmykOliva/dialogues_through_time_api)
+[Link to FastAPI backend](https://github.com/ArmykOliva/dialogues_through_time_api)
 
 [Watch our overview Video](https://youtu.be/link_to_youtube_video)
 
