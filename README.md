@@ -9,7 +9,7 @@
 
 [Watch our overview Video](https://www.youtube.com/watch?v=FxS6ehhNVrc)
 
-## To play
+## How to play
 To play, please visit the [releases](https://github.com/bentoBAUX/Dialogues-Through-Time/releases) section, download the .zip folder, unzip it and run "Dialogues Through Time.exe".
 
 ## Features
