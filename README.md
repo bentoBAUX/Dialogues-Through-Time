@@ -9,6 +9,14 @@
 
 [Watch our overview Video](https://www.youtube.com/watch?v=FxS6ehhNVrc)
 
+## How to play
+To play, please visit the [releases](https://github.com/bentoBAUX/Dialogues-Through-Time/releases) section, download the "Dialogues_Through_Time.zip" folder, unzip it and run "Dialogues Through Time.exe".
+
+Useful hotkeys in game:
+- F4 - AI Reset
+- F5 - Full game reset
+- F11 - Fullscreen toggle
+
 ## Features
 - **3D Interactive Environments**: Step into beautifully rendered historical settings.
 - **AI-driven Dialogue System**: Engage in deep, meaningful conversations with figures like Socrates, Leonardo da Vinci, and Jesus Christ.
