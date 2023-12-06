@@ -1,4 +1,4 @@
-![image](https://github.com/bentoBAUX/Dialogues-Through-Time/assets/46579634/3e8374b7-84e6-4965-a4f2-df2d5b39b404)# Dialogues Through Time - Unity Frontend
+# Dialogues Through Time - Unity Frontend
 
 ## Overview
 "Dialogues Through Time" is an innovative educational game where players interact with AI representations of historical figures, engaging in meaningful dialogues and learning about history in an immersive 3D environment. This Unity frontend is the gateway to a journey through time, providing an interactive experience that blends education with advanced AI technology.
