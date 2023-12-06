@@ -88,7 +88,13 @@ public class ChatManager : MonoBehaviour
 		{
       LeaveChat();
 		}
-  }
+
+		//fullscreen - windowed
+		if (Input.GetKeyDown(KeyCode.F11))
+		{
+			Screen.fullScreen = !Screen.fullScreen;
+		}
+	}
 
   public void LeaveChat()
   {
