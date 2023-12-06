@@ -10,7 +10,8 @@
 [Watch our overview Video](https://www.youtube.com/watch?v=FxS6ehhNVrc)
 
 ## How to play
-To play, please visit the [releases](https://github.com/bentoBAUX/Dialogues-Through-Time/releases) section, download the "Dialogues_Through_Time.zip" folder, unzip it and run "Dialogues Through Time.exe".
+Native (recommended): Please visit the [releases](https://github.com/bentoBAUX/Dialogues-Through-Time/releases) section, download the "Dialogues_Through_Time.zip" folder, unzip it and run "Dialogues Through Time.exe".
+Web (experimental): Visit [this](http://bentoBaux.github.io/Dialogues-Through-Time) link to play the game!
 
 Useful hotkeys in game:
 - F4 - AI Reset
