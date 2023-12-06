@@ -92,7 +92,18 @@ public class ChatManager : MonoBehaviour
 		//fullscreen - windowed
 		if (Input.GetKeyDown(KeyCode.F11))
 		{
-			Screen.fullScreen = !Screen.fullScreen;
+			if (Screen.fullScreen)
+			{
+				// Switch to windowed mode with a specific resolution
+				Screen.SetResolution(1280, 720, false);
+			}
+			else
+			{
+				// Switch to fullscreen mode
+        int nativeResolutionWidth = Screen.currentResolution.width;
+				int nativeResolutionHeight = Screen.currentResolution.height;
+				Screen.SetResolution(nativeResolutionWidth, nativeResolutionHeight, true);
+			}
 		}
 	}
 

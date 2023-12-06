@@ -10,7 +10,8 @@ public class NewBehaviourScript : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    string uniqueId = PlayerPrefs.GetString("UniqueID", "");
+		Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+		string uniqueId = PlayerPrefs.GetString("UniqueID", "");
 
     if (!string.IsNullOrEmpty(uniqueId))
     {
